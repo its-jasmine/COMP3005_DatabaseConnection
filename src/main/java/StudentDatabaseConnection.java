@@ -175,7 +175,8 @@ public class StudentDatabaseConnection {
 
 
     public static void main(String[] args) {
-        StudentDatabaseConnection studentDatabaseConnection = new StudentDatabaseConnection("Assignment (3) - Question (1)");
+        String dataBaseName = "Assignment (3) - Question (1)"; // Change as needed
+        StudentDatabaseConnection studentDatabaseConnection = new StudentDatabaseConnection(dataBaseName);
         studentDatabaseConnection.getAllStudents();
         studentDatabaseConnection.addStudent("test", "test", "test", "2023-09-01");
         studentDatabaseConnection.updateStudentEmail(1, "test2");
