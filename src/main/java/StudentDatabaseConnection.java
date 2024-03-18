@@ -72,7 +72,7 @@ public class StudentDatabaseConnection {
         try {
             Statement statement = connection.createStatement();
             String query = "INSERT INTO students (first_name, last_name, email, enrollment_date) VALUES " + String.format("('%s', '%s', '%s', '%s')", first_name, last_name, email, enrollment_date);
-            System.out.println(query);
+            System.out.println(query + "\n");
             statement.executeUpdate(query); // select query for all students
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -88,7 +88,7 @@ public class StudentDatabaseConnection {
         try {
             Statement statement = connection.createStatement();
             String query = String.format("UPDATE students SET email='%s' WHERE student_id=%s", new_email, studentId);
-            System.out.println(query);
+            System.out.println(query + "\n");
             statement.executeUpdate(query); // select query for all students
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -103,7 +103,7 @@ public class StudentDatabaseConnection {
         try {
             Statement statement = connection.createStatement();
             String query = String.format("DELETE FROM students WHERE student_id=%s", studentId);
-            System.out.println(query);
+            System.out.println(query + "\n");
             statement.executeUpdate(query); // select query for all students
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -120,6 +120,7 @@ public class StudentDatabaseConnection {
         ArrayList<String[]> values = getValues(resultSet);
         values.add(0,ATTRIBUTES);
         printHelper(getMaxLengths(values), values);
+        System.out.println();
     }
 
     /**
@@ -178,9 +179,13 @@ public class StudentDatabaseConnection {
         String dataBaseName = "Assignment (3) - Question (1)"; // Change as needed
         StudentDatabaseConnection studentDatabaseConnection = new StudentDatabaseConnection(dataBaseName);
         studentDatabaseConnection.getAllStudents();
+
         studentDatabaseConnection.addStudent("test", "test", "test", "2023-09-01");
+        studentDatabaseConnection.getAllStudents();
+
         studentDatabaseConnection.updateStudentEmail(1, "test2");
         studentDatabaseConnection.getAllStudents();
+
         studentDatabaseConnection.deleteStudent(1);
         studentDatabaseConnection.getAllStudents();
     }
